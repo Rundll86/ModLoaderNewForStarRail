@@ -1,5 +1,5 @@
-ModLoaderNew v1.4.0
-A Model Importer for GenshinImpact.
+ModLoaderNew-FSR v1.4.1
+A Model Importer for StarRail.
 The program has been successfully injected if you see this text.
 Made by Rundll86.
 

@@ -8,7 +8,7 @@ def clearConsole():
 
 clearConsole()
 infos = json.load(open("dontDeleteMe/assets/info.json", encoding="utf8"))
-print(f"ModLoaderNew v{infos['version']}")
+print(f"ModLoaderNew For StarRail v{infos['version']}")
 print("编写与开发 By <Rundll86> [ https://rundll86.github.io/ ]")
 print("项目仓库 With <Github> [ https://github.com/Rundll86/ModLoaderNew/ ]")
 print("！此程序是免费且开源的，如果你是付费购买的，那么你已经被骗了！")
@@ -81,11 +81,8 @@ def aData(i):
 
 def checkGame(path):
     for root, dir, file in os.walk(path):
-        if "YuanShen.exe" in file or "GenshinImpact.exe" in file:
-            if "YuanShen.exe" in file:
-                gametype = "YuanShen"
-            if "GenshinImpact.exe" in file:
-                gametype = "GenshinImpact"
+        if "StarRail.exe" in file:
+            gametype = "StarRail"
             gamepath = os.path.join(root, f"{gametype}.exe")
             print(f"已找到「{gametype}.exe」，其在 [ {gamepath} ] 。")
             global stime
@@ -274,10 +271,10 @@ def findGame_methodA():
         print("正在查找游戏路径（方式A）...")
         uninstallPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{}"
         availablePath = []
-        if pathExists(uninstallPath.format("Genshin Impact")):
-            availablePath.append(uninstallPath.format("Genshin Impact"))
-        if pathExists(uninstallPath.format("原神")):
-            availablePath.append(uninstallPath.format("原神"))
+        if pathExists(uninstallPath.format("Star Rail")):
+            availablePath.append(uninstallPath.format("Star Rail"))
+        if pathExists(uninstallPath.format("崩坏：星穹铁道")):
+            availablePath.append(uninstallPath.format("崩坏：星穹铁道"))
         global ok
         ok = False
         if len(availablePath) == 0:
@@ -366,7 +363,7 @@ def generateConfig(exit=True):
         config.write(gamepath)
         config.close()
     else:
-        print("没有在你的电脑中找到YuanShen.exe或GenshinImpact.exe，请确认你的电脑中已经安装了《原神》！")
+        print("没有在你的电脑中找到StarRail.exe，请确认你的电脑中已经安装了《崩坏：星穹铁道》！")
         print(f"按下任意键{'退出' if exit else '继续'}。")
         msvcrt.getch()
         if exit:
@@ -377,8 +374,7 @@ def killGame():
     print("请先确保你的游戏资料已经保存！（例如尘歌壶建筑、活动奖励等）")
     print("按下任意键继续...")
     msvcrt.getch()
-    RunAsPowerShell("taskkill /f /im YuanShen.exe")
-    RunAsPowerShell("taskkill /f /im GenshinImpact.exe")
+    RunAsPowerShell("taskkill /f /im StarRail.exe")
     RunAsPowerShell('taskkill /f /im "3DMigoto Loader.exe"')
 
 
@@ -625,16 +621,16 @@ else:
     msvcrt.getch()
 console = conkits.Choice(
     options=[
-        "* 退出程序         *",
-        "* 退出《原神》     *",
-        "* 重置配置文件     *",
-        "* 进入设置         *",
-        "* 自动安装模组     *",
-        "* 重新加载模组     *",
-        "* 重新加载渲染数据 *",
-        "* 修复模组         *",
-        "* 修复模组（传统） *",
-        "* 模组下载器       *",
+        "* 退出程序                  *",
+        "* 退出《崩坏：星穹铁道》    *",
+        "* 重置配置文件              *",
+        "* 进入设置                  *",
+        "* 自动安装模组              *",
+        "* 重新加载模组              *",
+        "* 重新加载渲染数据          *",
+        "* 修复模组                  *",
+        "* 修复模组（传统）          *",
+        "* 模组下载器                *",
     ],
     methods=[
         lambda: (print("正在清理数据..."), sys.exit()),

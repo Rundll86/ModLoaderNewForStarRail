@@ -21,7 +21,7 @@ def ZipDir(DirName, FileName, DontZip: list = []):
     File.close()
 
 
-filename = f"ModLoaderNew v{json.load(open('dontDeleteMe/assets/info.json',encoding='utf8'))['version']}.zip"
+filename = f"ModLoaderNew-ForStarRail v{json.load(open('dontDeleteMe/assets/info.json',encoding='utf8'))['version']}.zip"
 ZipDir(
     "dist",
     f"dist\\{filename}",
